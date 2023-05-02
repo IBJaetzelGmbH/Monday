@@ -1,0 +1,53 @@
+{
+    "elements": [],
+    "actions": [
+        {
+            "type": "Configurator",
+            "name": "Configurator",
+            "caption": "Configurator",
+            "rowCount": 15,
+            "delete": false,
+            "sort": {
+                "column": "DisplayName",
+                "direction": "ascending"
+            },
+            "columns": [
+                {
+                    "caption": "id",
+                    "name": "id",
+                    "width": "100px",
+                    "visible": false
+                },
+                {
+                    "caption": "Group ID",
+                    "name": "groupId",
+                    "width": "100px",
+                    "visible": false
+                },
+                {
+                    "caption": "Name",
+                    "name": "DisplayName",
+                    "width": "auto"
+                },
+                {
+                    "caption": "Description",
+                    "name": "Description",
+                    "width": "300px"
+                },
+                {
+                    "caption": "State",
+                    "name": "State",
+                    "width": "70px"
+                },
+                {
+                    "caption": "Columns",
+                    "name": "Columns",
+                    "width": "150px",
+                    "visible": false
+                }
+            ],
+            "values": []
+        }
+    ],
+    "status": []
+}

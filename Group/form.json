@@ -1,0 +1,22 @@
+{
+    "elements": [
+        {
+            "type": "ValidationTextBox",
+            "name": "BoardID",
+            "caption": "Board ID"
+        },
+        {
+            "type": "ValidationTextBox",
+            "name": "GroupID",
+            "caption": "Group ID"
+        },
+        {
+            "type": "ValidationTextBox",
+            "name": "Columns",
+            "caption": "Columns",
+            "visible": false
+        }
+    ],
+    "actions": [],
+    "status": []
+}

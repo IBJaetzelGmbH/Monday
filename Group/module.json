@@ -1,0 +1,16 @@
+{
+    "id": "{2EA48728-FC44-B701-A7AB-F6FBDFCCA2E1}",
+    "name": "Group",
+    "type": 3,
+    "vendor": "",
+    "aliases": [],
+    "parentRequirements": [
+        "{5537F0FF-18D6-B6D7-715E-F69B1A6225DF}"
+    ],
+    "childRequirements": [],
+    "implemented": [
+        "{39DE3DDB-87C6-4CEA-B96B-93C9A0CC910E}"
+    ],
+    "prefix": "MO",
+    "url": ""
+}

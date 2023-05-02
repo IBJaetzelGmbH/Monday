@@ -1,0 +1,16 @@
+{
+    "id": "{79CBEBAB-874A-DB2F-DA2F-0E77621EEF03}",
+    "name": "BoardConfigurator",
+    "type": 4,
+    "vendor": "",
+    "aliases": [],
+    "parentRequirements": [
+        "{5537F0FF-18D6-B6D7-715E-F69B1A6225DF}"
+    ],
+    "childRequirements": [],
+    "implemented": [
+        "{39DE3DDB-87C6-4CEA-B96B-93C9A0CC910E}"
+    ],
+    "prefix": "MO",
+    "url": ""
+}

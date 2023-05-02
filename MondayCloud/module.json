@@ -1,0 +1,16 @@
+{
+    "id": "{9DD94999-AC6B-10C6-E80B-445F637924E3}",
+    "name": "MondayCloud",
+    "type": 2,
+    "vendor": "",
+    "aliases": [],
+    "parentRequirements": [],
+    "childRequirements": [
+        "{39DE3DDB-87C6-4CEA-B96B-93C9A0CC910E}"
+    ],
+    "implemented": [
+        "{5537F0FF-18D6-B6D7-715E-F69B1A6225DF}"
+    ],
+    "prefix": "MO",
+    "url": ""
+}

@@ -1,0 +1,25 @@
+{
+    "id": "{88A1FC9C-243A-4467-9FD2-DE2265DACBF1}",
+    "caption": "Add value to Group",
+    "form": [
+        "return MO_getActionForm($_IPS['TARGET'],'GUID');"
+    ],
+    "priority": 1,
+    "action": [
+        "MO_updateTable($_IPS['TARGET'],$_IPS);"
+    ],
+    "restrictions": {
+        "includeEnvironments": [
+            "Default",
+            "TestCommands"
+        ],
+        "objectType": [ 1 ],
+        "moduleID": [
+            "{2EA48728-FC44-B701-A7AB-F6FBDFCCA2E1}"
+        ]
+    },
+    "locale": {
+        "de": {
+        }
+    }
+}
