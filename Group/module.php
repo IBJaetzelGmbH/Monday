@@ -117,14 +117,21 @@ declare(strict_types=1);
                                 'caption' => $column['title'],
                             ];
                             break;
-                        case 'text':
+                        case 'text2':
                             $Form[] = [
                                 'type'    => 'ValidationTextBox',
                                 'name'    => 'txt.' . strval($column['id']),
                                 'caption' => $column['title'],
                             ];
                             break;
+                        case 'text':
                         case 'numeric':
+                            if ($column['type'] == 'text') {
+                                $type = 'ValidationTextBox';
+                            }
+                            if ($column['type'] == 'numeric') {
+                                $type = 'NumberSpinner';
+                            }
                             $FieldName = strval($column['id']);
                             $FieldNameVariable = 'var' . strval($column['id']);
                             $DynamicName = 'DYNAMIC' . strval($column['id']);
@@ -149,7 +156,7 @@ declare(strict_types=1);
                                 ]
                             ];
                             $Form[] = [
-                                'type'    => 'NumberSpinner',
+                                'type'    => $type,
                                 'name'    => $FieldName,
                                 'caption' => $column['title'],
                                 'visible' => false,
