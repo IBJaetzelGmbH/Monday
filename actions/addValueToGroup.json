@@ -6,7 +6,7 @@
     ],
     "priority": 1,
     "action": [
-        "MO_updateTable($_IPS['TARGET'],$_IPS);"
+        "MO_addValue($_IPS['TARGET'],$_IPS);"
     ],
     "restrictions": {
         "includeEnvironments": [
@@ -20,6 +20,9 @@
     },
     "locale": {
         "de": {
+            "Source of value": "Quelle des Wertes",
+            "Constant Value": "Konstanter Wert",
+            "Other Variable": "Andere Variable"
         }
     }
 }

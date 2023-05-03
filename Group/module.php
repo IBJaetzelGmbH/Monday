@@ -120,33 +120,64 @@ declare(strict_types=1);
                         case 'text':
                             $Form[] = [
                                 'type'    => 'ValidationTextBox',
-                                'name'    => strval($column['id']),
+                                'name'    => 'txt.' . strval($column['id']),
                                 'caption' => $column['title'],
                             ];
                             break;
                         case 'numeric':
+                            $FieldName = strval($column['id']);
+                            $FieldNameVariable = 'var' . strval($column['id']);
+                            $DynamicName = 'DYNAMIC' . strval($column['id']);
                             $Form[] = [
-                                'type'    => 'ValidationTextBox',
-                                'name'    => strval($column['id']),
-                                'caption' => $column['title'],
+                                'type'    => 'Select',
+                                'name'    => $DynamicName = 'DYNAMIC' . strval($column['id']),
+                                'caption' => $this->Translate('Source of') .' ' . $column['title'],
+                                'value'   => true,
+                                'options' => [
+                                    [
+                                        'value'   => false,
+                                        'caption' => 'Constant Value',
+                                    ],
+                                    [
+                                        'value'   => true,
+                                        'caption' => 'Other Variable',
+                                    ],
+                                ],
+                                'onChange' => [
+                                    'IPS_UpdateFormField(\'' . $FieldName . '\',\'visible\',!$' . $DynamicName . ',$id);',
+                                    'IPS_UpdateFormField(\'' . $FieldNameVariable . '\',\'visible\',$' . $DynamicName . ',$id);',
+                                ]
                             ];
+                            $Form[] = [
+                                'type'    => 'NumberSpinner',
+                                'name'    => $FieldName,
+                                'caption' => $column['title'],
+                                'visible' => false,
+                            ];
+                            $Form[] = [
+                                'type'    => 'SelectVariable',
+                                'name'    => $FieldNameVariable,
+                                'caption' => $column['title'],
+                                'visible' => true,
+                            ];
+                            break;
                         default:
                             # code...
                             break;
                     }
                 }
-                IPS_LogMessage('form', print_r($Form, true));
+                //IPS_LogMessage('form', print_r($Form, true));
                 return $Form;
             }
         }
 
-        public function updateTable($IPS)
+        public function addValue($IPS)
         {
             $columns = $this->getColumns();
 
             //print_r($columns);
             $keys = array_keys($IPS);
-            //print_r($keys);
+            //print_r($_IPS);
 
             $variables = [];
             $columnVals = [];
@@ -165,13 +196,26 @@ declare(strict_types=1);
                             break;
                         case 'date':
                             $datum = json_decode($IPS[$column['id']], true);
-                            $datum = date('Y-m-d',strtotime($datum['year'] . '-' . $datum['month'] . '-' . $datum['day']));
+                            $datum = date('Y-m-d', strtotime($datum['year'] . '-' . $datum['month'] . '-' . $datum['day']));
 
                             $columnVals[$column['id']] = $datum;
                             break;
                         case 'text':
                         case 'numeric':
-                            $columnVals[$column['id']] = $IPS[$column['id']];
+                            $FieldName = strval($column['id']);
+                            $FieldNameVariable = 'var' . strval($column['id']);
+                            $DynamicName = 'DYNAMIC' . strval($column['id']);
+
+                            if ($_IPS[$DynamicName]) {
+                                if ($_IPS[$FieldNameVariable] > 1) {
+                                    $columnVals[$column['id']] = GetValue($_IPS[$FieldNameVariable]);
+                                    echo GetValue($_IPS[$FieldNameVariable]);
+                                } else {
+                                    $columnVals[$column['id']] = '';
+                                }
+                            } else {
+                                $columnVals[$column['id']] = $IPS[$column['id']];
+                            }
                             break;
                         default:
                             # code...
@@ -180,11 +224,9 @@ declare(strict_types=1);
                 }
             }
 
-            $query = 'mutation ($myItemName: String!, $columnVals: JSON!) { create_item (board_id:'.$this->ReadPropertyString('BoardID').', group_id:'.$this->ReadPropertyString('GroupID').' , item_name:$myItemName, column_values:$columnVals) { id } }';
+            $query = 'mutation ($myItemName: String!, $columnVals: JSON!) { create_item (board_id:' . $this->ReadPropertyString('BoardID') . ', group_id:' . $this->ReadPropertyString('GroupID') . ' , item_name:$myItemName, column_values:$columnVals) { id } }';
             $variables['columnVals'] = json_encode($columnVals);
             $this->sendQuery($query, $variables);
-
-
         }
 
         private function sendQuery(string $query, array $vars = [])
@@ -232,7 +274,7 @@ declare(strict_types=1);
               }
               ';
             $result = $this->sendQuery($query);
-            IPS_LogMessage('Users', print_r($result['data']['users'], true));
+            //IPS_LogMessage('Users', print_r($result['data']['users'], true));
             return $result['data']['users'];
         }
     }

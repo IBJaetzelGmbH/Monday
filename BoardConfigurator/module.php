@@ -34,8 +34,6 @@ define('GUID_MONDAY_CLOUD', '{9DD94999-AC6B-10C6-E80B-445F637924E3}');
             $Form = json_decode(file_get_contents(__DIR__ . '/form.json'), true);
             $boards = $this->getAllBoards();
 
-            IPS_LogMessage('test', print_r($boards, true));
-
             $Values = [];
             $parentID = 9000;
 
@@ -59,6 +57,7 @@ define('GUID_MONDAY_CLOUD', '{9DD94999-AC6B-10C6-E80B-445F637924E3}');
                         'instanceID'                                => $instanceID,
                         'create'                                    => [
                             'moduleID'      => GUID_GROUP,
+                            'name'          => $board['name'] . ' - ' . $group['title'],
                             'configuration' => [
                                 'BoardID' => $board['id'],
                                 'GroupID' => $group['id']

@@ -55,7 +55,9 @@ eval('declare(strict_types=1);namespace LuanaMonday {?>' . file_get_contents(__D
                 'Authorization: ' . $token
             ];
 
-            IPS_LogMessage('test',print_r($vars,true));
+            $this->SendDebug('Query', $query,0);
+            $this->SendDebug('Variablen', $vars,0);
+
             $data = @file_get_contents($this->apiURL, false, stream_context_create([
                 'http' => [
                     'method'  => 'POST',
@@ -64,9 +66,14 @@ eval('declare(strict_types=1);namespace LuanaMonday {?>' . file_get_contents(__D
                 ]
             ]));
 
-            IPS_LogMessage('test data', $data);
-            $responseContent = json_decode($data, true);
-            $this->SendDebug(__FUNCTION__ . ' result', $responseContent, 0);
+            if ($data != false) {
+                $responseContent = json_decode($data, true);
+                $this->SendDebug(__FUNCTION__ . ' result', $responseContent, 0);
+            } else {
+                $this->LogMessage($this->Translate('Error on sendRequest'),KL_ERROR);
+                $responseContent = [];
+            }
+
 
             return $responseContent;
         }

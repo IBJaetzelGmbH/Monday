@@ -3,7 +3,7 @@
     "name": "BoardConfigurator",
     "type": 4,
     "vendor": "",
-    "aliases": [],
+    "aliases": ["Luana Board Configurator"],
     "parentRequirements": [
         "{5537F0FF-18D6-B6D7-715E-F69B1A6225DF}"
     ],
