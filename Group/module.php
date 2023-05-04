@@ -138,7 +138,7 @@ declare(strict_types=1);
                             $Form[] = [
                                 'type'    => 'Select',
                                 'name'    => $DynamicName = 'DYNAMIC' . strval($column['id']),
-                                'caption' => $this->Translate('Source of') .' ' . $column['title'],
+                                'caption' => $this->Translate('Source of') . ' ' . $column['title'],
                                 'value'   => true,
                                 'options' => [
                                     [
@@ -202,8 +202,13 @@ declare(strict_types=1);
                             $columnVals[$column['id']] = ['label'=> $IPS[$column['id']]];
                             break;
                         case 'date':
+
                             $datum = json_decode($IPS[$column['id']], true);
-                            $datum = date('Y-m-d', strtotime($datum['year'] . '-' . $datum['month'] . '-' . $datum['day']));
+                            if (($datum['year'] == 0) || ($datum['month'] == 0) || ($datum['day'] == 0)) {
+                                $datum = date('Y-m-d', time());
+                            } else {
+                                $datum = date('Y-m-d', strtotime($datum['year'] . '-' . $datum['month'] . '-' . $datum['day']));
+                            }
 
                             $columnVals[$column['id']] = $datum;
                             break;
