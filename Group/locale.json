@@ -1,6 +1,8 @@
 {
     "translations": {
         "de": {
+            "Board ID": "Board ID",
+            "Group ID": "Gruppen ID",
             "Source of": "Quelle von"
         }
     }
