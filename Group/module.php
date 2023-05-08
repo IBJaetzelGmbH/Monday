@@ -56,7 +56,6 @@ declare(strict_types=1);
 
             $columns = $this->getColumns();
             $this->SendDebug('columns', json_encode($columns), 0);
-            //IPS_LogMessage('columns', print_r($columns, true));
             foreach ($columns as $column) {
                 switch ($column['type']) {
                         case 'name':
@@ -192,7 +191,6 @@ declare(strict_types=1);
                             break;
                     }
             }
-            //IPS_LogMessage('form', print_r($Form, true));
             return $Form;
         }
 
@@ -200,9 +198,7 @@ declare(strict_types=1);
         {
             $columns = $this->getColumns();
 
-            //print_r($columns);
             $keys = array_keys($IPS);
-            print_r($_IPS);
 
             $variables = [];
             $columnVals = [];
@@ -323,7 +319,6 @@ declare(strict_types=1);
 					  }
 					  ';
             $result = $this->sendQuery($query);
-            IPS_LogMessage('result', print_r($result, true));
             return $result['data']['boards'][0]['groups'][0]['items'];
         }
 
@@ -337,7 +332,6 @@ declare(strict_types=1);
               }
               ';
             $result = $this->sendQuery($query);
-            //IPS_LogMessage('Users', print_r($result['data']['users'], true));
             return $result['data']['users'];
         }
     }
