@@ -34,7 +34,7 @@ __Konfigurationsseite__:
 
 Name     | Beschreibung
 -------- | ------------------
-Konfigurator | DFer Konfiugrator listet alle Boards mit den dazugehörigen Gruppen auf, die Boards können aufgeklappt werden, um die Gruppeninstanzen darunter aufzulisten. Jeder Gruppe kann als Instanz erstellt werden.
+Konfigurator | Der Konfiugrator listet alle Boards mit den dazugehörigen Gruppen auf, die Boards können aufgeklappt werden, um die Gruppeninstanzen darunter aufzulisten. Jeder Gruppe kann als Instanz erstellt werden.
 
 ### 5. Statusvariablen und Profile
 
