@@ -236,7 +236,6 @@ declare(strict_types=1);
                             if ($_IPS[$DynamicName]) {
                                 if ($_IPS[$FieldNameVariable] > 1) {
                                     $columnVals[$column['id']] = GetValue($_IPS[$FieldNameVariable]);
-                                    echo GetValue($_IPS[$FieldNameVariable]);
                                 } else {
                                     $columnVals[$column['id']] = '';
                                 }
