@@ -52,7 +52,6 @@ declare(strict_types=1);
                     'caption' => $this->Translate('Element'),
                     'options' => $options
                 ];
-
             }
 
             $columns = $this->getColumns();
@@ -256,7 +255,6 @@ declare(strict_types=1);
                 }
             }
 
-
             if (!array_key_exists('element', $IPS)) {
                 $query = 'mutation ($myItemName: String!, $columnVals: JSON!) { create_item (board_id:' . $this->ReadPropertyString('BoardID') . ', group_id:' . $this->ReadPropertyString('GroupID') . ' , item_name:$myItemName, column_values:$columnVals) { id } }';
             } else {
@@ -265,15 +263,13 @@ declare(strict_types=1);
                     ($columnVals: JSON!) { 
                     change_multiple_column_values(
                         board_id: ' . $this->ReadPropertyString('BoardID') . '
-                        item_id: '.$IPS['element'].'
+                        item_id: ' . $IPS['element'] . '
                         column_values: $columnVals
                     )
                     { id }
                 }';
             }
 
-
-            
             $variables['columnVals'] = json_encode($columnVals);
             $this->sendQuery($query, $variables);
         }

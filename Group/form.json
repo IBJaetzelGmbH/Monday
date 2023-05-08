@@ -9,12 +9,6 @@
             "type": "ValidationTextBox",
             "name": "GroupID",
             "caption": "Group ID"
-        },
-        {
-            "type": "ValidationTextBox",
-            "name": "Columns",
-            "caption": "Columns",
-            "visible": false
         }
     ],
     "actions": [],

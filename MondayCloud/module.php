@@ -55,8 +55,8 @@ eval('declare(strict_types=1);namespace LuanaMonday {?>' . file_get_contents(__D
                 'Authorization: ' . $token
             ];
 
-            $this->SendDebug('Query', $query,0);
-            $this->SendDebug('Variablen', $vars,0);
+            $this->SendDebug('Query', $query, 0);
+            $this->SendDebug('Variablen', $vars, 0);
 
             $data = @file_get_contents($this->apiURL, false, stream_context_create([
                 'http' => [
@@ -70,10 +70,9 @@ eval('declare(strict_types=1);namespace LuanaMonday {?>' . file_get_contents(__D
                 $responseContent = json_decode($data, true);
                 $this->SendDebug(__FUNCTION__ . ' result', $responseContent, 0);
             } else {
-                $this->LogMessage($this->Translate('Error on sendRequest'),KL_ERROR);
+                $this->LogMessage($this->Translate('Error on sendRequest'), KL_ERROR);
                 $responseContent = [];
             }
-
 
             return $responseContent;
         }
