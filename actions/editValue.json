@@ -20,6 +20,7 @@
     },
     "locale": {
         "de": {
+            "Edit element from Group": "Element aus der Gruppe bearbeiten",
             "Source of value": "Quelle des Wertes",
             "Constant Value": "Konstanter Wert",
             "Other Variable": "Andere Variable"

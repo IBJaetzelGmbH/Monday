@@ -1,12 +1,12 @@
-# LuanaMonday
+# Monday
 
 Folgende Module beinhaltet das LuanaMonday Repository:
 
-- __Board__ ([Dokumentation](Board))  
-	Kurze Beschreibung des Moduls.
+- __Group__ ([Dokumentation](Board))  
+	Dieses Modul stellt Aktionen bereit, um Items einer Monday Gruppe hinzuzufügen bzw. diese zu ändern.
 
 - __MondayCloud__ ([Dokumentation](MondayCloud))  
-	Kurze Beschreibung des Moduls.
+	Diese Instanz stellt die Verbindung zu der Monday Cloud her.
 
 - __BoardConfigurator__ ([Dokumentation](BoardConfigurator))  
-	Kurze Beschreibung des Moduls.
+	Über den Konfigurator können die einzelne Boards / Gruppen angelegt werden.

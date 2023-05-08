@@ -1,6 +1,6 @@
 {
     "id": "{88A1FC9C-243A-4467-9FD2-DE2265DACBF1}",
-    "caption": "Add value to Group",
+    "caption": "Add Element to Group",
     "form": [
         "return MO_getActionForm($_IPS['TARGET'],'{88A1FC9C-243A-4467-9FD2-DE2265DACBF1}');"
     ],
@@ -20,6 +20,7 @@
     },
     "locale": {
         "de": {
+            "Add Element to Group": "Element zur Gruppe hinzufügen",
             "Source of value": "Quelle des Wertes",
             "Constant Value": "Konstanter Wert",
             "Other Variable": "Andere Variable"

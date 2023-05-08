@@ -1,19 +1,21 @@
 # MondayCloud
-Beschreibung des Moduls.
+Diese Instanz stellt die Verbindung zu der Monday Cloud her.
 
 ### Inhaltsverzeichnis
 
-1. [Funktionsumfang](#1-funktionsumfang)
-2. [Voraussetzungen](#2-voraussetzungen)
-3. [Software-Installation](#3-software-installation)
-4. [Einrichten der Instanzen in IP-Symcon](#4-einrichten-der-instanzen-in-ip-symcon)
-5. [Statusvariablen und Profile](#5-statusvariablen-und-profile)
-6. [WebFront](#6-webfront)
-7. [PHP-Befehlsreferenz](#7-php-befehlsreferenz)
+- [MondayCloud](#mondaycloud)
+    - [Inhaltsverzeichnis](#inhaltsverzeichnis)
+    - [1. Funktionsumfang](#1-funktionsumfang)
+    - [2. Voraussetzungen](#2-voraussetzungen)
+    - [3. Software-Installation](#3-software-installation)
+    - [4. Einrichten der Instanzen in IP-Symcon](#4-einrichten-der-instanzen-in-ip-symcon)
+    - [5. Statusvariablen und Profile](#5-statusvariablen-und-profile)
+    - [6. WebFront](#6-webfront)
+    - [7. PHP-Befehlsreferenz](#7-php-befehlsreferenz)
 
 ### 1. Funktionsumfang
 
-*
+* Stellt die Verbindung zur Monday Cloud her.
 
 ### 2. Voraussetzungen
 
@@ -21,8 +23,7 @@ Beschreibung des Moduls.
 
 ### 3. Software-Installation
 
-* Über den Module Store das 'MondayCloud'-Modul installieren.
-* Alternativ über das Module Control folgende URL hinzufügen
+* Alternativ über das Module Control folgende URL hinzufügen: URL
 
 ### 4. Einrichten der Instanzen in IP-Symcon
 
@@ -33,35 +34,17 @@ __Konfigurationsseite__:
 
 Name     | Beschreibung
 -------- | ------------------
-         |
+Token    | Hier wird der API Token von Monday hinterlegt, mit welchem die Verbindung zu der Monday Cloud hergstellt werden soll.
          |
 
 ### 5. Statusvariablen und Profile
 
-Die Statusvariablen/Kategorien werden automatisch angelegt. Das Löschen einzelner kann zu Fehlfunktionen führen.
-
-#### Statusvariablen
-
-Name   | Typ     | Beschreibung
------- | ------- | ------------
-       |         |
-       |         |
-
-#### Profile
-
-Name   | Typ
------- | -------
-       |
-       |
+Diese Instanz legt keine Variablen, Kategorien oder Profile an.
 
 ### 6. WebFront
 
-Die Funktionalität, die das Modul im WebFront bietet.
+Die Instanz bietet keine Webfront Funktionalität.
 
 ### 7. PHP-Befehlsreferenz
 
-`boolean MO_BeispielFunktion(integer $InstanzID);`
-Erklärung der Funktion.
-
-Beispiel:
-`MO_BeispielFunktion(12345);`
+Keine öffentlichen Funktionen vorhanden.
