@@ -34,12 +34,32 @@ declare(strict_types=1);
         {
             $Form = [];
 
-            if ($actionGUID == 'GUID') {
-                $columns = $this->getColumns();
-                $this->SendDebug('columns', json_encode($columns), 0);
-                //IPS_LogMessage('columns', print_r($columns, true));
-                foreach ($columns as $column) {
-                    switch ($column['type']) {
+            if ($actionGUID == '{13847E74-A394-47C3-83F0-53885CA54FFE}') {
+                $items = $this->getGroupItems();
+
+                $options = [];
+                $values = [];
+                foreach ($items as $item) {
+                    $options[] = [
+                        'value'       => $item['id'],
+                        'caption'     => $item['name'],
+                    ];
+                }
+
+                $Form[] = [
+                    'type'    => 'Select',
+                    'name'    => 'element',
+                    'caption' => $this->Translate('Element'),
+                    'options' => $options
+                ];
+
+            }
+
+            $columns = $this->getColumns();
+            $this->SendDebug('columns', json_encode($columns), 0);
+            //IPS_LogMessage('columns', print_r($columns, true));
+            foreach ($columns as $column) {
+                switch ($column['type']) {
                         case 'name':
                             $Form[] = [
                                 'type'    => 'ValidationTextBox',
@@ -172,19 +192,18 @@ declare(strict_types=1);
                             # code...
                             break;
                     }
-                }
-                //IPS_LogMessage('form', print_r($Form, true));
-                return $Form;
             }
+            //IPS_LogMessage('form', print_r($Form, true));
+            return $Form;
         }
 
-        public function addValue($IPS)
+        public function addEditValue($IPS)
         {
             $columns = $this->getColumns();
 
             //print_r($columns);
             $keys = array_keys($IPS);
-            //print_r($_IPS);
+            print_r($_IPS);
 
             $variables = [];
             $columnVals = [];
@@ -194,6 +213,7 @@ declare(strict_types=1);
                     switch ($column['type']) {
                         case 'name':
                             $variables['myItemName'] = $IPS[$column['id']];
+                            $columnVals['name'] = $IPS[$column['id']];
                             break;
                         case 'multiple-person':
                             $columnVals[$column['id']] = strval($IPS[$column['id']]);
@@ -236,7 +256,24 @@ declare(strict_types=1);
                 }
             }
 
-            $query = 'mutation ($myItemName: String!, $columnVals: JSON!) { create_item (board_id:' . $this->ReadPropertyString('BoardID') . ', group_id:' . $this->ReadPropertyString('GroupID') . ' , item_name:$myItemName, column_values:$columnVals) { id } }';
+
+            if (!array_key_exists('element', $IPS)) {
+                $query = 'mutation ($myItemName: String!, $columnVals: JSON!) { create_item (board_id:' . $this->ReadPropertyString('BoardID') . ', group_id:' . $this->ReadPropertyString('GroupID') . ' , item_name:$myItemName, column_values:$columnVals) { id } }';
+            } else {
+                $query = '
+                mutation 
+                    ($columnVals: JSON!) { 
+                    change_multiple_column_values(
+                        board_id: ' . $this->ReadPropertyString('BoardID') . '
+                        item_id: '.$IPS['element'].'
+                        column_values: $columnVals
+                    )
+                    { id }
+                }';
+            }
+
+
+            
             $variables['columnVals'] = json_encode($columnVals);
             $this->sendQuery($query, $variables);
         }
@@ -274,6 +311,24 @@ declare(strict_types=1);
 					  ';
             $result = $this->sendQuery($query);
             return $result['data']['boards'][0]['columns'];
+        }
+
+        private function getGroupItems()
+        {
+            $query = '{
+					boards(ids: ' . $this->ReadPropertyString('BoardID') . ') {
+						groups(ids: "' . $this->ReadPropertyString('GroupID') . '") {
+							items {
+                                id
+                                name
+                            }
+						  }
+						}
+					  }
+					  ';
+            $result = $this->sendQuery($query);
+            IPS_LogMessage('result', print_r($result, true));
+            return $result['data']['boards'][0]['groups'][0]['items'];
         }
 
         private function getUsers()

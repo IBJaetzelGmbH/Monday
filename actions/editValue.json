@@ -1,8 +1,8 @@
 {
-    "id": "{88A1FC9C-243A-4467-9FD2-DE2265DACBF1}",
-    "caption": "Add value to Group",
+    "id": "{13847E74-A394-47C3-83F0-53885CA54FFE}",
+    "caption": "Edit value from Group",
     "form": [
-        "return MO_getActionForm($_IPS['TARGET'],'{88A1FC9C-243A-4467-9FD2-DE2265DACBF1}');"
+        "return MO_getActionForm($_IPS['TARGET'],'{13847E74-A394-47C3-83F0-53885CA54FFE}');"
     ],
     "priority": 1,
     "action": [
