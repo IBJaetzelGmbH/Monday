@@ -13,6 +13,7 @@ eval('declare(strict_types=1);namespace LuanaMonday {?>' . file_get_contents(__D
             //Never delete this line!
             parent::Create();
             $this->RegisterPropertyString('Token', '');
+            $this->RegisterPropertyString('APIVersion', '2023-07');
         }
 
         public function Destroy()
@@ -46,13 +47,15 @@ eval('declare(strict_types=1);namespace LuanaMonday {?>' . file_get_contents(__D
         private function sendRequest($query, $vars = [])
         {
             $token = $this->ReadPropertyString('Token');
+            $APIVersion = $this->ReadPropertyString('APIVersion');
             if ($token == '') {
                 return;
             }
 
             $headers = [
                 'Content-Type: application/json',
-                'Authorization: ' . $token
+                'Authorization: ' . $token,
+                'API-Version: '.$APIVersion
             ];
 
             $this->SendDebug('Query', $query, 0);

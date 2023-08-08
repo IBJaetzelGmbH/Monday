@@ -4,6 +4,21 @@
             "type": "ValidationTextBox",
             "name": "Token",
             "caption": "Token"
+        },
+        {
+            "type": "Select",
+            "name": "APIVersion",
+            "caption": "APIVersion",
+            "options": [
+                {
+                    "caption": "2023-07",
+                    "value": "2023-07"
+                },
+                {
+                    "caption": "2023-10",
+                    "value": "2023-10"
+                }
+            ]
         }
     ],
     "actions": [],
