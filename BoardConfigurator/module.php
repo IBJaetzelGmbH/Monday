@@ -93,7 +93,7 @@ define('GUID_MONDAY_CLOUD', '{9DD94999-AC6B-10C6-E80B-445F637924E3}');
                   name
 				  description
 				  state
-				  groups(){
+				  groups {
 					id,
 					title
 				  }
